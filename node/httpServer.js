@@ -1,4 +1,5 @@
 import http from 'http'
+import fs from 'fs'
 const port = 8090;
 const server = http.createServer((req, res)=>{
     if(req.url==='/'){
@@ -7,7 +8,9 @@ const server = http.createServer((req, res)=>{
     }
 
     if(req.url ==='/contact'){
-        
+        let ans = fs.readFileSync('pages/One.html', 'utf-8')
+        res.write(ans);
+        res.end()
     }
 })
 
