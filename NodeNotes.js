@@ -10,3 +10,62 @@
 
 // b) new style (Es6) --> simple import and export
 
+
+// destructure-->
+// const {x , obj} = require('./A');
+
+
+// Destructuring  --> 
+// let obj = {
+//     name:"one",
+//     age:34,
+//     email:"one@gmail.com"
+// }
+
+// let a = obj.name
+// let b = obj.age
+// let c = obj.email
+
+// let {name, email, age} = obj
+
+// console.log(name)
+// console.log(email)
+// console.log(age)
+
+
+// let arr = [10, 20, 30];
+// let b = arr ;
+
+// b.push(9)
+// b.push(19)
+
+// console.log(b)  // [10, 20, 30 ,9 ,19]
+// console.log(arr) // [10, 20, 30]
+// console.log(b)
+
+
+// Spread Operator --> used copy the element of array or object into new array or object
+// let arr = [10, 20, 30];
+// let ans = [...arr]
+// ans.pop()
+// ans.pop()
+
+// console.log(ans)
+// console.log(arr)
+
+
+
+//Type of Modules -->
+// a) Core module -->  modules that are present inside node js the do not need to install
+// examples -->fs module , http , __dirname , __dirname etc
+
+// b)   Local module--> these are user created modules(functions)
+
+// a)   Third party  module--> need to install from outside of the node
+// example --> express , nodemon , etc
+
+
+
+
+
+
