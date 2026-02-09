@@ -45,6 +45,12 @@ app.post('/register',(req,res)=>{
 })
 
 
+// create a product api where admin(user) can send product detail from frontend. console the details in api and send response  (check api using both ways html and postman)
+
+
+
+
+
 
 app.listen(port , ()=>{
     console.log("express server is running")

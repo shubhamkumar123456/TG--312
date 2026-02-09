@@ -66,6 +66,15 @@
 
 
 
+// middleware is a function that have the access of requesting to an object , responding to an object, they can also modify the request and response. they can also used between the routes. it have three arguments request , response and next
+
+// example-->
+// app.use((req, res, next)=>{
+    //     console.log("i am middleware")
+    //     // res.send("i am middleware")
+    //     next()
+    // })
+
 // https://github.com/shubhamkumar123456/TG--312.git
 
 
