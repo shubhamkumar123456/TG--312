@@ -52,6 +52,7 @@ app.post('/products',(req, res)=>{
 
 
 // data send using (/:variableName) params
+// example -->localhost:8080/trial/10/hello
 app.get('/trial/:a/:b', (req,res)=>{
     console.log(req.params)  ////gives you an object
     console.log(req.params.a)
