@@ -45,12 +45,15 @@ app.post('/register',(req,res)=>{
 })
 
 
-// create a product api where admin(user) can send product detail from frontend. console the details in api and send response  (check api using both ways html and postman)
+app.post('/products',(req, res)=>{
+    console.log(req.body);
+    res.json({msg:"all ok"})
+})
 
 
+// create a product api where admin(user) can send product detail from frontend. console the details in server and send response  (check api using both ways html and postman)
 
-
-
+// https://github.com/shubhamkumar123456/TG--312.git
 
 app.listen(port , ()=>{
     console.log("express server is running")
