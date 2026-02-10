@@ -44,11 +44,31 @@ app.post('/register',(req,res)=>{
     res.json({msg:"data recieve"})
 })
 
-
+// data send in body -->
 app.post('/products',(req, res)=>{
     console.log(req.body);
     res.json({msg:"all ok"})
 })
+
+
+// data send using (/:variableName) params
+app.get('/trial/:a/:b', (req,res)=>{
+    console.log(req.params)  ////gives you an object
+    console.log(req.params.a)
+    console.log(req.params.b)
+    res.json({msg:"all ok"})
+})
+
+// data send through query  --> using ? mark
+// example -->localhost:8080/trialOne?x=10&y=hello
+app.get('/trialOne',(req,res)=>{
+    console.log(req.query)  //gives you an object
+    console.log(req.query.x)
+    console.log(req.query.y)
+    res.json({msg:"all good"})
+})
+
+
 
 
 // create a product api where admin(user) can send product detail from frontend. console the details in server and send response  (check api using both ways html and postman)
