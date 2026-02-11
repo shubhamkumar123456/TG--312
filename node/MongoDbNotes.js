@@ -35,6 +35,7 @@
 
 // $lt, $gt , $et, $lte , $gte
 // 10) query operator --> db.collectionName.find({price:{$lt:5000}})
+// 10) query operator --> db.collectionName.find({price:{$lt:5000,$gt:3000}})
 
 // let arr = [
 //     {name:"iphone", price:45000, rating:4.5, quantity:5},
@@ -44,3 +45,4 @@
 //     {name:"oppo", price:85000, rating:2.5, quantity:3},
    
 // ]
+
