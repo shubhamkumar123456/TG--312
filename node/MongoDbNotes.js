@@ -46,3 +46,18 @@
    
 // ]
 
+
+let user = {
+    name:"iron man",
+    email:"iroman@gmail.com",
+    age:40,
+    details:{
+        houseNo:12,
+        city:"kanpur",
+        state:"UP"
+    }
+}
+
+// find data using nested key in mongodb --> 
+// example --> db.users.find({"details.city":'lucknow'})
+
