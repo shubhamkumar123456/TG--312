@@ -69,9 +69,6 @@ app.get('/trialOne',(req,res)=>{
     res.json({msg:"all good"})
 })
 
-
-
-
 // create a product api where admin(user) can send product detail from frontend. console the details in server and send response  (check api using both ways html and postman)
 
 // https://github.com/shubhamkumar123456/TG--312.git
