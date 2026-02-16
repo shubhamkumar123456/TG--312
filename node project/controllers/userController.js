@@ -23,7 +23,7 @@ const registerUser = async(req, res)=>{
 const loginUser = async(req,res)=>{
     // res.send("login function is running")
     const {email , password} = req.body;  //password --> 123455
-    
+
     let checkUser = await userCollection.findOne({email}); //{id, email, password} or null
     if(checkUser){
         // let comparePassword = await bcrypt.hash('originalPass', 'hashPass')
@@ -45,7 +45,10 @@ const updateUser = async(req,res)=>{
 }
 
 const deleteUser = async(req,res)=>{
-    res.send("delete function is running")
+    console.log(req.params)
+    let {id} = req.params
+    let data = await userCollection.deleteOne({_id:id})
+    res.json({msg:"user deleted successfully"})
 }
 
 module.exports = {
