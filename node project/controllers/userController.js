@@ -7,16 +7,21 @@ const userCollection = require('../models/userModel')
 const registerUser = async(req, res)=>{
     // console.log(req.body);
     const   {name, email, password} = req.body
-    let checkUser = await userCollection.findOne({email:email})  // 
+   try {
+     let checkUser = await userCollection.findOne({email:email})  // 
     if(checkUser){
-        return res.json({msg:"user already registered"})
+        // return res.json({msg:"user already registered", success:false})
+        return res.status(401).json({msg:"user already registered"})
     }
     else{
         const hashPassword = bcrypt.hashSync(password, salt);
         let data = await userCollection.insertOne({name, email,password:hashPassword})
-        res.json({msg:"user registered successfully"})
+        // res.json({msg:"user registered successfully", success:true})
+        res.status(201).json({msg:"user registered successfully"})
     }
-    
+   } catch (error) {
+        res.status(500).json({msg:"error in creating user",error:error.message})
+   }
 }
 
 
@@ -41,7 +46,21 @@ const loginUser = async(req,res)=>{
 }
 
 const updateUser = async(req,res)=>{
-    res.send("update function is running")
+    // res.send("update function is running");
+    const {id} = req.params;
+    const {name , password} = req.body ;
+    try {
+    
+        if(password){
+            var hashPassword = await bcrypt.hash(password, salt)
+    }
+
+        let data = await userCollection.updateOne({_id:id} , {$set:{name:name, password:hashPassword}})
+        res.status(200).json({msg:"user updated successfully"})
+    } catch (error) {
+        res.status(500).json({msg:"error in updating user",error:error.message})
+    }
+
 }
 
 const deleteUser = async(req,res)=>{
