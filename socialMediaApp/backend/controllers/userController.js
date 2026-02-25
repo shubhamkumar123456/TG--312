@@ -68,13 +68,14 @@ const updateUser = async(req,res)=>{
 }
 
 const deleteUser = async(req,res)=>{
-    console.log(req.params)
-    // let {id} = req.params
-     let token = req.headers.authorization
-    console.log(token)
-    let varify = jwt.verify(token,jwt_secret )
-    console.log(varify)
-    let data = await userCollection.deleteOne({_id:varify._id})
+    // console.log(req.params)
+    // // let {id} = req.params
+    //  let token = req.headers.authorization
+    // console.log(token)
+    // let varify = jwt.verify(token,jwt_secret )
+    // console.log(varify)
+    let userId = req.user
+    let data = await userCollection.deleteOne({_id:userId})
     res.json({msg:"user deleted successfully"})
 }
 
