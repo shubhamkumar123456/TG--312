@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input id="nameInput" type="text" placeholder="enter your name">
+        <button onclick="handleSubmit()">submit</button>
+    </div>
+
+    <script>
+
+        let inputtag = document.getElementById('nameInput');
+        console.log(inputtag)
+
+        function handleSubmit(){
+            let username = inputtag.value
+            console.log(username)
+            localStorage.setItem('g6Socket',username);
+            window.location = 'chat.html'
+        }
+
+    </script>
+</body>
+</html>
