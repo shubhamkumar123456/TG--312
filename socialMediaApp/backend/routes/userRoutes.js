@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser, updateUser, deleteUser } = require('../controllers/userController');
+const { registerUser, loginUser, updateUser, deleteUser, followUser } = require('../controllers/userController');
 const authToken = require('../middleware/checkToken');
 const router = express.Router();
 
@@ -7,6 +7,7 @@ const router = express.Router();
 router.post('/register',registerUser);
 router.post('/login', loginUser);
 router.put('/update/:id',updateUser)
-router.delete('/delete',authToken,deleteUser)
+router.delete('/delete',authToken,deleteUser);
+router.put('/follow/:friendId', authToken,followUser);
 
 module.exports = router;

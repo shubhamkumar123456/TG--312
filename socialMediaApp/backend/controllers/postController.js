@@ -3,11 +3,14 @@ const postCollection = require('../models/postModel')
 const createPost = async(req,res)=>{
     // res.send('create post function is running')
    try {
-     const {title, file} = req.body
+    // console.log(req.body);
+    // console.log(req.file);
+     const {title} = req.body
+
     const userId = req.user;
     let data = await postCollection.insertOne({
         title,
-        file,
+        file:req.file.filename,
         userId
     })
 

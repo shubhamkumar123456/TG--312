@@ -27,7 +27,10 @@ userSchema.add({
     coverPic:{
         type:String,
         default:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRRFw0-fuQJAHqMlujSR13hyiCAngEaNc0w&s"
-    }
+    },
+    followers:[{type:String,ref:'users'}],
+    followings:[{type:String,ref:'users'}]
+
 })
 
 let Users = mongoose.model('users' ,userSchema )
