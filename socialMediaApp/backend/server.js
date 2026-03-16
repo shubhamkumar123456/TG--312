@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 8090;
+const cors = require('cors')
 
 const mongodbConnection = require('./config/db')  //function
 const userCollection  = require('./models/userModel')
@@ -13,6 +14,7 @@ mongodbConnection()
 const userRouter = require('./routes/userRoutes')
 const postRouter = require('./routes/postRoutes')
 
+app.use(cors())
 app.use(express.json())  //
 app.get('/',(req, res)=>{
     res.send('welcome page')

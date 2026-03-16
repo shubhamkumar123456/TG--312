@@ -18,17 +18,36 @@ const createPost = async(req,res)=>{
    } catch (error) {
         res.status(500).json({msg:"error in creating post"})
    }
-
 }
+
 const getPost = async(req,res)=>{
     res.send('get post  is running')
-}
+
+1}
+
 const getAllPosts = async(req, res)=>{
-    res.send('get all post function is running')
+    try {
+        let allposts = await postCollection.find().populate({path:'userId',select:'name profilePic'});
+        return res.status(200).json({posts:allposts})
+    } catch (error) {
+        res.status(500).json({msg:"error in getting all post"})
+    }
 }
+
+const getUserPosts = async(req, res)=>{
+    let userId = req.user;
+     try {
+         let posts = await postCollection.find({userId:userId});
+        return res.status(200).json({posts})
+    } catch (error) {
+        res.status(500).json({msg:"error in getting users posts"})
+    }
+}
+
 const updatePost = async(req,res)=>{
     res.send('update post  function is running')
 }
+
 const deletePost = async(req,res)=>{
     res.send('delete post function is running')
 }
@@ -38,5 +57,6 @@ module.exports =  {
     getPost,
     getAllPosts,
     updatePost,
-    deletePost
+    deletePost,
+    getUserPosts
 }

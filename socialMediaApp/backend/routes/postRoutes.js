@@ -1,5 +1,5 @@
 const express = require('express');
-const { createPost, getPost, getAllPosts, updatePost, deletePost } = require('../controllers/postController');
+const { createPost, getPost, getAllPosts, updatePost, deletePost, getUserPosts } = require('../controllers/postController');
 const authToken = require('../middleware/checkToken');
 const upload = require('../config/multer');
 const router = express.Router();
@@ -9,6 +9,7 @@ router.get('/get/:id', getPost);
 router.get('/all' , getAllPosts);
 router.put('/update/:id',updatePost)
 router.delete('/delete/:id',deletePost);
+router.get('/userPosts', authToken, getUserPosts)
 
 module.exports = router
 

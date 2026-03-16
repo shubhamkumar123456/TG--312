@@ -7,6 +7,7 @@ import { BrowserRouter , Routes , Route } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/register'  element={<Signup/>}/>
                 <Route path='/login'  element={<Login/>}/>
             </Routes>
+            <ToastContainer/>
       </BrowserRouter>
 
     </div>
