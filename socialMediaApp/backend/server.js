@@ -21,7 +21,7 @@ app.get('/',(req, res)=>{
 })
 
 
-
+app.use('/uploads', express.static('uploads'));
 
 
 app.use('/users',userRouter);

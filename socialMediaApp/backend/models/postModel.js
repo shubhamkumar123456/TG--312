@@ -12,4 +12,8 @@ const postSchema = new mongoose.Schema({
     }
 },{timestamps:true})
 
+postSchema.add({
+    likes:[{type:String,ref:'users'}]
+})
+
 module.exports = mongoose.model('posts', postSchema);

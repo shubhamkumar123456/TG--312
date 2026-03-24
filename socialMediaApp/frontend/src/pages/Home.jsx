@@ -17,6 +17,8 @@ import SendOutlined from '@mui/icons-material/SendOutlined';
 import Face from '@mui/icons-material/Face';
 import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 
+import {formatDistanceToNow} from 'date-fns'
+
 
 
 const Home = () => {
@@ -38,15 +40,18 @@ const Home = () => {
   }, [])
   
   return (
-    <div>
+    <div className="pt-7">
 
-      <PostComponent/>
+      <div className="">
+        <PostComponent/>
+      </div>
 
       {
         allPost.map((ele , i)=>{
             return     <Card
+            key={ele._id}
       variant="outlined"
-      sx={{margin:'40px auto', minWidth: 300,maxWidth:400, '--Card-radius': (theme) => theme.vars.radius.xs }}
+      sx={{margin:'40px auto',zIndex:0, minWidth: 300,maxWidth:350, '--Card-radius': (theme) => theme.vars.radius.xs }}
     >
       <CardContent orientation="horizontal" sx={{ alignItems: 'center', gap: 1 }}>
         <Box
@@ -78,9 +83,9 @@ const Home = () => {
         </IconButton>
       </CardContent>
       <CardOverflow>
-        <AspectRatio>
-          <img src="/static/images/cards/yosemite.jpeg" alt="" loading="lazy" />
-        </AspectRatio>
+        
+          <img className="h-[250px] object-contain object-center" src={`http://localhost:8090/uploads/${ele.file}`} alt="" loading="lazy" />
+        
       </CardOverflow>
       <CardContent orientation="horizontal" sx={{ alignItems: 'center', mx: -1 }}>
         <Box sx={{ width: 0, display: 'flex', gap: 0.5 }}>
@@ -124,7 +129,7 @@ const Home = () => {
           textColor="text.primary"
           sx={{ fontSize: 'sm', fontWeight: 'lg' }}
         >
-          8.1M Likes
+          {ele.likes.length} Likes
         </Link>
         <Typography sx={{ fontSize: 'sm' }}>
           <Link
@@ -133,9 +138,9 @@ const Home = () => {
             textColor="text.primary"
             sx={{ fontWeight: 'lg' }}
           >
-            MUI
+          
           </Link>{' '}
-          The React component library you always wanted
+          {ele.title}
         </Typography>
         <Link
           component="button"
@@ -150,7 +155,7 @@ const Home = () => {
           underline="none"
           sx={{ fontSize: '10px', color: 'text.tertiary', my: 0.5 }}
         >
-          2 DAYS AGO
+          {formatDistanceToNow(new Date(ele.createdAt),{addSuffix:true})}
         </Link>
       </CardContent>
       <CardContent orientation="horizontal" sx={{ gap: 1 }}>
