@@ -8,9 +8,21 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import { ToastContainer, toast } from 'react-toastify';
+import { useContext, useEffect } from 'react'
+import UserContext from './context/UserContext'
 
 function App() {
 
+  let token = localStorage.getItem('g6Social');
+  
+  let ctx = useContext(UserContext);
+  console.log(ctx)  //
+
+  useEffect(()=>{
+      if(token){
+        ctx.getUserData()
+      }
+  },[token])
 
   return (
     <div>

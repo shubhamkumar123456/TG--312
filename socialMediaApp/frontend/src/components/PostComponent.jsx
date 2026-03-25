@@ -1,21 +1,26 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { FcAddImage } from "react-icons/fc";
 import EmojiPicker from 'emoji-picker-react';
 import { BsEmojiLaughing } from "react-icons/bs";
 import { toast } from 'react-toastify';
+import UserContext from '../context/UserContext';
 
 
 const PostComponent = () => {
+
+  let ctx = useContext(UserContext);
+  console.log(ctx)
+
     const [show, setshow] = useState(false);
     const [image, setimage] = useState(''); //''
     let inputRef = useRef()  //{current:undefined}
 
 
     let token = localStorage.getItem('g6Social')
-    console.log(token)
+    // console.log(token)
 
 
-    console.log(show)
+    // console.log(show)
 
     function handleEmojiShow() {
         setshow(!show)
@@ -101,7 +106,7 @@ const PostComponent = () => {
   <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-4">
   
     <div className="flex items-center gap-3 mb-4">
-      <img src="https://i.pravatar.cc/40" className="w-10 h-10 rounded-full" />
+      <img src={ctx.userData?.user?.profilePic} className="w-10 h-10 rounded-full" />
       <input ref={inputRef} id="postText" type="text" placeholder="What's on your mind?" className="w-full bg-gray-100 rounded-full px-4 py-2 outline-none" />
     </div>
    
