@@ -6,7 +6,7 @@ const Navbar = () => {
   let ctx = useContext(UserContext);
   console.log(ctx)
   return (
-   <div className='bg-[url(https://free-3dtextureshd.com/wp-content/uploads/2024/04/39.jpg.webp)] flex items-center justify-between  bg-cover bg-center'>
+   <div className='bg-[url(https://free-3dtextureshd.com/wp-content/uploads/2024/04/39.jpg.webp)] flex   bg-cover bg-center'>
   
   <div className='
     text-white
@@ -17,6 +17,8 @@ const Navbar = () => {
     flex justify-between items-center
     px-6 py-3
     h-[65px]
+    w-full
+
   '>
     <h1 className=' text-xl font-bold'>SocialMedia</h1>
 
@@ -26,12 +28,13 @@ const Navbar = () => {
       <li ><Link className='hover:bg-orange-400 rounded p-3' to={'/contact'}>Contact</Link></li>
       <li ><Link className='hover:bg-orange-400 bg-orange-700 rounded p-3' to={'/login'}>Login</Link></li>
       <li ><Link className='hover:bg-orange-400 rounded p-3 bg-orange-700' to={'/register'}>Signup</Link></li>
+      <div className='ring w-12 h-12 rounded-full p-1 cursor-pointer'>
+    <img src={ctx.userData?.user?.profilePic} className='w-full object-cover h-full rounded-full' alt="" />
+  </div>
     </ul>
   </div>
 
-  <div>
-    <img src={ctx.userData?.user?.profilePic} className='w-20 h-20 rounded-full' alt="" />
-  </div>
+  
 </div>
   )
 }
