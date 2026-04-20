@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import { ToastContainer, toast } from 'react-toastify';
 import { useContext, useEffect } from 'react'
 import UserContext from './context/UserContext'
+import ForgetPassword from './pages/ForgetPassword'
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
                 <Route path='/contact'  element={<Contact/>}/>
                 <Route path='/register'  element={<Signup/>}/>
                 <Route path='/login'  element={<Login/>}/>
+                <Route path='/forgetpassword'  element={<ForgetPassword/>}/>
+
             </Routes>
             <ToastContainer/>
       </BrowserRouter>

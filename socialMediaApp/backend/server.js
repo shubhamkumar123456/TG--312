@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8090;
 const cors = require('cors')
+// const dotenv = require('dotenv')
+// dotenv.config()
+
+// console.log(process.env.NODE_MAILER)
 
 const mongodbConnection = require('./config/db')  //function
 const userCollection  = require('./models/userModel')
