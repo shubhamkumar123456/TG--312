@@ -3,6 +3,7 @@ const salt = bcrypt.genSaltSync(10);
 const userCollection = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const jwt_secret = "johnCarter@123";
+const randomString = require('randomstring')
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -119,6 +120,10 @@ const forgetPassword = async (req, res) => {
   let user = await userCollection.findOne({ email });
 
   if (user) {
+
+    let resetToken = randomString.generate(50) //afrtyuioutr456789
+    user.resetPasswordToken = resetToken;
+    await user.save();
     // write nodemailer code here
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -135,7 +140,7 @@ const forgetPassword = async (req, res) => {
         from: '"Social media Team " shubhamfarainzi@gmail.com', // sender address
         to: email, // list of recipients
         subject: "Password reset request", // subject line
-        text: "Hello world? this is trial", // plain text body
+        text: `click the link below to reset your password \n http://localhost:8090/users/resetPassword/${resetToken}`, // plain text body
         // html: "<b>Hello world?</b>", // HTML body
       });
 
@@ -152,6 +157,27 @@ const forgetPassword = async (req, res) => {
   }
 };
 
+const resetPassword = async(req , res)=>{
+  console.log(req.params)
+  const {token} = req.params
+  // res.send("all is well")
+  // res.sendFile(__dirname+'/forgetPassword.html')
+  res.render('forgetPassword', {token})
+}
+
+const updatePassword = async(req, res)=>{
+  const {token} = req.params;
+  const {password} = req.body;
+
+  let user = await userCollection.findOne({resetPasswordToken:token});
+  let hashPassword = await bcrypt.hash(password, salt);
+  user.password = hashPassword;
+  user.resetPasswordToken = ''
+  await user.save();
+  return res.status(200).json({msg:"password updated successfully"})
+
+}
+
 module.exports = {
   registerUser,
   loginUser,
@@ -159,5 +185,7 @@ module.exports = {
   deleteUser,
   followUser,
   loggedInUser,
-  forgetPassword
+  forgetPassword,
+  resetPassword,
+  updatePassword
 };

@@ -18,6 +18,8 @@ mongodbConnection()
 const userRouter = require('./routes/userRoutes')
 const postRouter = require('./routes/postRoutes')
 
+
+app.set('view engine', 'ejs')
 app.use(cors())
 app.use(express.json())  //
 app.get('/',(req, res)=>{
