@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 async function mongodbConnection(){
    try {
-    await mongoose.connect('mongodb://localhost:27017/project1');
+    await mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@socialmediag6.2h1hdjm.mongodb.net/?appName=SocialMediaG6`);
+
     console.log("mongodb connected successfully")
    } catch (error) {
         console.log("error in connecting Db")
