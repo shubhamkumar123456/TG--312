@@ -140,7 +140,7 @@ const forgetPassword = async (req, res) => {
         from: '"Social media Team " shubhamfarainzi@gmail.com', // sender address
         to: email, // list of recipients
         subject: "Password reset request", // subject line
-        text: `click the link below to reset your password \n http://localhost:8090/users/resetPassword/${resetToken}`, // plain text body
+        text: `click the link below to reset your password \n https://socialmedia-vm3j.onrender.com/users/resetPassword/${resetToken}`, // plain text body
         // html: "<b>Hello world?</b>", // HTML body
       });
 
